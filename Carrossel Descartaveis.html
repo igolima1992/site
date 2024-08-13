@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitrine Descartáveis</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <style>
+        /* Estilos para a vitrine e o carrossel */
+        .showcase-category {
+            background-color: #F06292;
+            padding: 20px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            width: 100vw; /* Ocupa toda a largura da tela */
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .line.flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .box-text {
+            flex: 1;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .title-section {
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .text-xl {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .btn-secundary {
+            background-color: #FFC107;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: auto;
+        }
+
+        .swiper-wrapper {
+            display: flex;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            width: 300px;
+            flex-shrink: 0;
+            box-sizing: border-box;
+        }
+
+        .product.nb {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .image img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .info-product {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .product-name {
+            font-size: 1rem;
+            margin: 10px 0;
+        }
+
+        .down-line {
+            margin-top: 10px;
+        }
+
+        .btn-primary--select {
+            background-color: #00BCD4;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+
+        .swiper-button-next, .swiper-button-prev {
+            color: #fff;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 50%;
+        }
+
+        .swiper-pagination-bullet {
+            background-color: #FFC107;
+        }
+
+        .swiper-pagination-bullet-active {
+            background-color: #F06292;
+        }
+
+        @media (max-width: 768px) {
+            .swiper-slide {
+                width: 80%; /* Ajuste o tamanho dos slides no mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="vitrine-container"></div> <!-- Div que será usada para inserir a vitrine -->
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Cria o HTML da vitrine com todos os produtos
+        var showcaseHTML = `
+        <section class="showcase-category">
+            <div class="container">
+                <div class="line flex">
+                    <div class="box-text">
+                        <h2 class="title-section text-white">Descartáveis</h2>
+                        <p class="text-xl">Tudo o que você precisa em descartáveis</p>
+                        <a class="btn-secundary" href="/descartaveis">Aproveite agora!</a>
+                    </div>
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="product nb">
+                                    <div class="image">
+                                        <a href="https://www.rivfestas.com.br/carrinho/produto/269116519/adicionar">
+                                            <img src="https://cdn.awsli.com.br/1776/1776057/arquivos/painel-balao-kit-festa-unicornio-decoracao-rivfestas-2.png" alt="Produto 1">
+                                        </a>
+                                    </div>
+                                    <a class="btn-primary btn-primary--select" href="https://www.rivfestas.com.br/carrinho/produto/269116519/adicionar">Selecionar</a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="product nb">
+                                    <div class="image">
+                                        <a href="https://www.rivfestas.com.br/carrinho/produto/257933048/adicionar">
+                                            <img src="https://cdn.awsli.com.br/1776/1776057/arquivos/kit-festa-super-mario-decoracao-painel-toalha-vermelha.png" alt="Produto 2">
+                                        </a>
+                                    </div>
+                                    <a class="btn-primary btn-primary--select" href="https://www.rivfestas.com.br/carrinho/produto/257933048/adicionar">Selecionar</a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="product nb">
+                                    <div class="image">
+                                        <a href="https://www.rivfestas.com.br/carrinho/produto/240478535/adicionar">
+                                            <img src="https://cdn.awsli.com.br/1776/1776057/arquivos/kit-festa-stitch-painel-toalha-rosa-ml.png" alt="Produto 3">
+                                        </a>
+                                    </div>
+                                    <a class="btn-primary btn-primary--select" href="https://www.rivfestas.com.br/carrinho/produto/240478535/adicionar">Selecionar</a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="product nb">
+                                    <div class="image">
+                                        <a href="https://www.rivfestas.com.br/carrinho/produto/195774169/adicionar">
+                                            <img src="https://cdn.awsli.com.br/1776/1776057/arquivos/202308012108351792194649-1600-auto.png" alt="Produto 4">
+                                        </a>
+                                    </div>
+                                    <a class="btn-primary btn-primary--select" href="https://www.rivfestas.com.br/carrinho/produto/195774169/adicionar">Selecionar</a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="product nb">
+                                    <div class="image">
+                                        <a href="https://www.rivfestas.com.br/kit-festa-sao-paulo-decoracao-painel-toalha-vermelha-tnt">
+                                            <img src="https://cdn.awsli.com.br/1776/1776057/arquivos/kit-fessta-sao-paulo-painel-toalha-de-mesa-rivfestas.png" alt="Produto 5">
+                                        </a>
+                                    </div>
+                                    <a class="btn-primary btn-primary--select" href="https://www.rivfestas.com.br/kit-festa-sao-paulo-decoracao-painel-toalha-vermelha-tnt">Selecionar</a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="product nb">
+                                    <div class="image">
+                                        <a href="https://www.rivfestas.com.br/carrinho/produto/234612551/adicionar">
+                                            <img src="https://cdn.awsli.com.br/1776/1776057/arquivos/kit-festa-princesas-disney-decoracao-anivers-rivfestas.png" alt="Produto 6">
+                                        </a>
+                                    </div>
+                                    <a class="btn-primary btn-primary--select" href="https://www.rivfestas.com.br/carrinho/produto/234612551/adicionar">Selecionar</a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="product nb">
+                                    <div class="image">
+                                        <a href="https://www.rivfestas.com.br/carrinho/produto/257201325/adicionar">
+                                            <img src="https://cdn.awsli.com.br/1776/1776057/arquivos/-kit-festa-painel-toalha.png" alt="Produto 7">
+                                        </a>
+                                    </div>
+                                    <a class="btn-primary btn-primary--select" href="https://www.rivfestas.com.br/carrinho/produto/257201325/adicionar">Selecionar</a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="product nb">
+                                    <div class="image">
+                                        <a href="https://www.rivfestas.com.br/carrinho/produto/241090113/adicionar">
+                                            <img src="https://cdn.awsli.com.br/1776/1776057/arquivos/kit-festa-peppa-pig-decoracao-rivfestas-4.png" alt="Produto 8">
+                                        </a>
+                                    </div>
+                                    <a class="btn-primary btn-primary--select" href="https://www.rivfestas.com.br/carrinho/produto/241090113/adicionar">Selecionar</a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="product nb">
+                                    <div class="image">
+                                        <a href="https://www.rivfestas.com.br/carrinho/produto/238024950/adicionar">
+                                            <img src="https://cdn.awsli.com.br/1776/1776057/arquivos/kit-festa-palmeiras-balao-painel-toalha.png" alt="Produto 9">
+                                        </a>
+                                    </div>
+                                    <a class="btn-primary btn-primary--select" href="https://www.rivfestas.com.br/carrinho/produto/238024950/adicionar">Selecionar</a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="product nb">
+                                    <div class="image">
+                                        <a href="https://www.rivfestas.com.br/carrinho/produto/267291018/adicionar">
+                                            <img src="https://cdn.awsli.com.br/1776/1776057/arquivos/kit-festa-one-piece-decoracao-rivfestas-1.png" alt="Produto 10">
+                                        </a>
+                                    </div>
+                                    <a class="btn-primary btn-primary--select" href="https://www.rivfestas.com.br/carrinho/produto/267291018/adicionar">Selecionar</a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="product nb">
+                                    <div class="image">
+                                        <a href="https://www.rivfestas.com.br/produto/kit-festa-masha-e-o-urso-decoracao-painel-vela-display">
+                                            <img src="https://cdn.awsli.com.br/1776/1776057/arquivos/kit-festa-masha-e-o-urso-2-anos-rivfestas.png" alt="Produto 11">
+                                        </a>
+                                    </div>
+                                    <a class="btn-primary btn-primary--select" href="https://www.rivfestas.com.br/produto/kit-festa-masha-e-o-urso-decoracao-painel-vela-display">Selecionar</a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="product nb">
+                                    <div class="image">
+                                        <a href="https://www.rivfestas.com.br/carrinho/produto/234612415/adicionar">
+                                            <img src="https://cdn.awsli.com.br/1776/1776057/arquivos/kit_festa_hulk-painel_display-decoracao-rivfestas.png" alt="Produto 12">
+                                        </a>
+                                    </div>
+                                    <a class="btn-primary btn-primary--select" href="https://www.rivfestas.com.br/carrinho/produto/234612415/adicionar">Selecionar</a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="product nb">
+                                    <div class="image">
+                                        <a href="https://www.rivfestas.com.br/carrinho/produto/173122746/adicionar">
+                                            <img src="https://cdn.awsli.com.br/1776/1776057/arquivos/kit-festa-homem-aranha-painel-balao-ml.png" alt="Produto 13">
+                                        </a>
+                                    </div>
+                                    <a class="btn-primary btn-primary--select" href="https://www.rivfestas.com.br/carrinho/produto/173122746/adicionar">Selecionar</a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="product nb">
+                                    <div class="image">
+                                        <a href="https://www.rivfestas.com.br/carrinho/produto/269142814/adicionar">
+                                            <img src="https://cdn.awsli.com.br/1776/1776057/arquivos/kit-festa-homem-de-ferro-decoracao-rivfestas-3.png" alt="Produto 14">
+                                        </a>
+                                    </div>
+                                    <a class="btn-primary btn-primary--select" href="https://www.rivfestas.com.br/carrinho/produto/269142814/adicionar">Selecionar</a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="product nb">
+                                    <div class="image">
+                                        <a href="https://www.rivfestas.com.br/kit-festa-flamengo-decoracao-toalha-mesa-painel-25-baloes">
+                                            <img src="https://cdn.awsli.com.br/1776/1776057/arquivos/kit-festa-flamengo-decoracao-aniverts-rio-rivfestas-2.png" alt="Produto 15">
+                                        </a>
+                                    </div>
+                                    <a class="btn-primary btn-primary--select" href="https://www.rivfestas.com.br/kit-festa-flamengo-decoracao-toalha-mesa-painel-25-baloes">Selecionar</a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="product nb">
+                                    <div class="image">
+                                        <a href="https://www.rivfestas.com.br/carrinho/produto/238868094/adicionar">
+                                            <img src="https://cdn.awsli.com.br/1776/1776057/arquivos/kit-festa-encanto-decoracao-rivfestas.png" alt="Produto 16">
+                                        </a>
+                                    </div>
+                                    <a class="btn-primary btn-primary--select" href="https://www.rivfestas.com.br/carrinho/produto/238868094/adicionar">Selecionar</a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="product nb">
+                                    <div class="image">
+                                        <a href="https://www.rivfestas.com.br/kit-festa-divertidamente-decora-painel-toalha-laranjabalao">
+                                            <img src="https://cdn.awsli.com.br/1776/1776057/arquivos/kit-festa-divertidamente-decoracao-rivfestas-13.png" alt="Produto 17">
+                                        </a>
+                                    </div>
+                                    <a class="btn-primary btn-primary--select" href="https://www.rivfestas.com.br/kit-festa-divertidamente-decora-painel-toalha-laranjabalao">Selecionar</a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="product nb">
+                                    <div class="image">
+                                        <a href="https://www.rivfestas.com.br/kit-festa-dino-baby-decoracao-aniv-painel-25-balao-toalha">
+                                            <img src="https://cdn.awsli.com.br/1776/1776057/arquivos/kit-festa-dino-baby-decoracao-rivfestas-4.png" alt="Produto 18">
+                                        </a>
+                                    </div>
+                                    <a class="btn-primary btn-primary--select" href="https://www.rivfestas.com.br/kit-festa-dino-baby-decoracao-aniv-painel-25-balao-toalha">Selecionar</a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="product nb">
+                                    <div class="image">
+                                        <a href="https://www.rivfestas.com.br/kit-festa-corinthians-decoracao-aniversario-paineltoalha">
+                                            <img src="https://cdn.awsli.com.br/1776/1776057/arquivos/kit-festa-corinthians-decoracao-aniversario-rivfestas-4.png" alt="Produto 19">
+                                        </a>
+                                    </div>
+                                    <a class="btn-primary btn-primary--select" href="https://www.rivfestas.com.br/kit-festa-corinthians-decoracao-aniversario-paineltoalha">Selecionar</a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="product nb">
+                                    <div class="image">
+                                        <a href="https://www.rivfestas.com.br/carrinho/produto/268202175/adicionar">
+                                            <img src="https://cdn.awsli.com.br/1776/1776057/arquivos/kit-festa-carros-disney-decoracao-aniversario-rivfestas-1.png" alt="Produto 20">
+                                        </a>
+                                    </div>
+                                    <a class="btn-primary btn-primary--select" href="https://www.rivfestas.com.br/carrinho/produto/268202175/adicionar">Selecionar</a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="product nb">
+                                    <div class="image">
+                                        <a href="https://www.rivfestas.com.br/carrinho/produto/286445865/adicionar">
+                                            <img src="https://cdn.awsli.com.br/1776/1776057/arquivos/kit-festa-capitao-america-festa-aniversario-rivfestas-3.png" alt="Produto 21">
+                                        </a>
+                                    </div>
+                                    <a class="btn-primary btn-primary--select" href="https://www.rivfestas.com.br/carrinho/produto/286445865/adicionar">Selecionar</a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="product nb">
+                                    <div class="image">
+                                        <a href="https://www.rivfestas.com.br/kit-festa-branca-de-neve-decoracao-toalha-25-baloes-painel">
+                                            <img src="https://cdn.awsli.com.br/1776/1776057/arquivos/kit-festa-branca-de-neve-deoracao-aniversario-rivfestas-4.png" alt="Produto 22">
+                                        </a>
+                                    </div>
+                                    <a class="btn-primary btn-primary--select" href="https://www.rivfestas.com.br/kit-festa-branca-de-neve-decoracao-toalha-25-baloes-painel">Selecionar</a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="product nb">
+                                    <div class="image">
+                                        <a href="https://www.rivfestas.com.br/carrinho/produto/275457796/adicionar">
+                                            <img src="https://cdn.awsli.com.br/1776/1776057/arquivos/kit-festa-bolofofos-decoracao-rivestas-3-li.jpg" alt="Produto 23">
+                                        </a>
+                                    </div>
+                                    <a class="btn-primary btn-primary--select" href="https://www.rivfestas.com.br/carrinho/produto/275457796/adicionar">Selecionar</a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="product nb">
+                                    <div class="image">
+                                        <a href="https://www.rivfestas.com.br/kit-descartaveis-preto-econom-50-pessoas-pratos-copos-garfos">
+                                            <img src="https://cdn.awsli.com.br/1776/1776057/arquivos/kit-descartaveis-festa-preta-2-li.jpg" alt="Produto 24">
+                                        </a>
+                                    </div>
+                                    <a class="btn-primary btn-primary--select" href="https://www.rivfestas.com.br/kit-descartaveis-preto-econom-50-pessoas-pratos-copos-garfos">Selecionar</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Adicionando os botões de navegação -->
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                        <!-- Adicionando a paginação -->
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        `;
+
+        // Localiza a div alvo
+        var targetDiv = document.querySelector('.titulo-categoria.borda-principal.cor-principal.vitrine-mas-vendido');
+
+        // Insere o código da vitrine antes da div alvo
+        if (targetDiv) {
+            targetDiv.insertAdjacentHTML('beforebegin', showcaseHTML);
+        } else {
+            console.warn('Div alvo não encontrada!');
+        }
+
+        // Configuração do Swiper
+        const swiper = new Swiper('.swiper-container', {
+            slidesPerView: 1,
+            spaceBetween: 10,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            loop: false,
+            breakpoints: {
+                640: {
+                    slidesPerView: 1,
+                    spaceBetween: 10,
+                },
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                },
+            },
+        });
+    });
+</script>
+
+</body>
+</html>
